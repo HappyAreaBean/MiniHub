@@ -1,0 +1,26 @@
+[versions]
+paper-api = "1.21.11-R0.1-SNAPSHOT"
+minecraft = "1.21.11"
+
+spec = "1.5"
+lamp = "4.0.0-rc.17"
+
+fastboard = "2.2.0"
+
+shadow = "9.5.1"
+run-task = "3.0.2"
+lombok = "9.5.0"
+
+[libraries]
+paper-api = { module = "io.papermc.paper:paper-api", version.ref = "paper-api" }
+
+spec = { module = "io.github.revxrsal:spec", version.ref = "spec" }
+lamp-common = { module = "io.github.revxrsal:lamp.common", version.ref = "lamp" }
+lamp-bukkit = { module = "io.github.revxrsal:lamp.bukkit", version.ref = "lamp" }
+
+fastboard = { module = "fr.mrmicky:fastboard", version.ref = "fastboard" }
+
+[plugins]
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+run-paper = { id = "xyz.jpenilla.run-paper", version.ref = "run-task" }
+lombok = { id = "io.freefair.lombok", version.ref = "lombok" }

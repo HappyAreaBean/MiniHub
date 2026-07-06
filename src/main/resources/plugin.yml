@@ -1,0 +1,11 @@
+name: MiniHub
+description: $description
+prefix: MiniHub
+version: '${version}'
+
+main: net.fantasyrealms.minihub.MiniHub
+api-version: '1.13'
+load: POSTWORLD
+
+authors: [ HappyAreaBean ]
+website: https://fantasyrealms.net
