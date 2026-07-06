@@ -147,7 +147,7 @@ public interface MiniHubConfig {
 
     }
 
-    @Order(400)
+    @Order(4000)
     RegionBorder regionBorder();
 
     @ConfigSpec
