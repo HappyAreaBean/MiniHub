@@ -9,11 +9,15 @@ public class ExplosionListener implements Listener {
 
     @EventHandler
     public void onExplosionPrime(ExplosionPrimeEvent event) {
-        var world = event.getEntity().getWorld();
+        var entity = event.getEntity();
+        var world = entity.getWorld();
 
         if (!Utils.isEnabledWorlds(world)) return;
 
-        event.setCancelled(true);
+        if (!event.isCancelled()) {
+            entity.remove();
+            event.setCancelled(true);
+        }
     }
 
 }
