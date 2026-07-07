@@ -2,6 +2,7 @@ package net.fantasyrealms.minihub;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import net.fantasyrealms.minihub.common.Constants;
 import net.fantasyrealms.minihub.config.ConfigManager;
 import net.fantasyrealms.minihub.config.commands.MiniHubCommand;
 import net.fantasyrealms.minihub.listener.BlockBreakListener;
@@ -19,6 +20,8 @@ import net.fantasyrealms.minihub.listener.SpawnOnJoinListener;
 import net.fantasyrealms.minihub.listener.VoidTeleportYListener;
 import net.fantasyrealms.minihub.listener.WeatherChangeListener;
 import net.fantasyrealms.minihub.utils.Cuboid;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -36,6 +39,7 @@ public final class MiniHub extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
 
+        printLogo();
         getSLF4JLogger().info("Welcome to MiniHub! :)");
 
         var lampBuilder = BukkitLamp.builder(this);
@@ -46,6 +50,12 @@ public final class MiniHub extends JavaPlugin {
 
         setupCuboid();
         registerListeners();
+    }
+
+    private void printLogo() {
+        Constants.LOGO.forEach(s -> {
+            getServer().getConsoleSender().sendMessage(Component.text(s).color(TextColor.fromCSSHexString("#39e1e4")));
+        });
     }
 
     public void setupCuboid() {
