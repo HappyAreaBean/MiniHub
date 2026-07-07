@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.fantasyrealms.minihub.MiniHub;
 import net.fantasyrealms.minihub.config.typeadapter.impl.LocationTypeAdapter;
+import net.fantasyrealms.minihub.scoreboard.ScoreboardConfig;
 import org.bukkit.Location;
 import revxrsal.spec.SpecAdapterFactory;
 
@@ -23,9 +24,11 @@ public final class ConfigManager {
             .setPrettyPrinting()
             .create();
     private final SpecConfig<MiniHubConfig> config;
+    private final SpecConfig<ScoreboardConfig> scoreboard;
 
     public ConfigManager(MiniHub plugin) {
         this.config = SpecConfig.create(MiniHubConfig.class, new File(plugin.getDataFolder(), "config.yml"), GSON);
+        this.scoreboard = SpecConfig.create(ScoreboardConfig.class, new File(plugin.getDataFolder(), "scoreboard.yml"), GSON);
 
         init(plugin);
         reloadAll();
@@ -33,6 +36,7 @@ public final class ConfigManager {
 
     public void reloadAll() {
         config.reload();
+        scoreboard.reload();
     }
 
     public void init(MiniHub plugin) {
@@ -40,6 +44,7 @@ public final class ConfigManager {
             plugin.getDataFolder().mkdir();
 
         createIfNotExist(config);
+        createIfNotExist(scoreboard);
     }
 
     private void createIfNotExist(SpecConfig<?> spec) {

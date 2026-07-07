@@ -19,6 +19,7 @@ import net.fantasyrealms.minihub.listener.RespawnToSpawnListener;
 import net.fantasyrealms.minihub.listener.SpawnOnJoinListener;
 import net.fantasyrealms.minihub.listener.VoidTeleportYListener;
 import net.fantasyrealms.minihub.listener.WeatherChangeListener;
+import net.fantasyrealms.minihub.scoreboard.manager.ScoreboardManager;
 import net.fantasyrealms.minihub.utils.Cuboid;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -33,6 +34,7 @@ public final class MiniHub extends JavaPlugin {
     public static MiniHub INSTANCE;
 
     private ConfigManager configManager;
+    private ScoreboardManager scoreboardManager;
     private Cuboid cuboid;
 
     @Override
@@ -47,6 +49,8 @@ public final class MiniHub extends JavaPlugin {
         lamp.register(new MiniHubCommand());
 
         configManager = new ConfigManager(this);
+        scoreboardManager = new ScoreboardManager(this);
+        scoreboardManager.init();
 
         setupCuboid();
         registerListeners();
@@ -117,6 +121,8 @@ public final class MiniHub extends JavaPlugin {
 
         if (config.respawnToSpawn())
             pm.registerEvents(new RespawnToSpawnListener(), this);
+
+        scoreboardManager.registerListeners();
     }
 
     public void unregisterAllListeners() {
@@ -126,5 +132,9 @@ public final class MiniHub extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    public boolean isPAPI() {
+        return Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
     }
 }
