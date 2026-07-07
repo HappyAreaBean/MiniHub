@@ -8,6 +8,7 @@ plugins {
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://repo.extendedclip.com/releases/")
 }
 
 dependencies {
@@ -17,6 +18,8 @@ dependencies {
     implementation(libs.lamp.bukkit)
     implementation(libs.spec)
     implementation(libs.fastboard)
+
+    compileOnly(libs.placeholderapi)
 }
 
 java {
