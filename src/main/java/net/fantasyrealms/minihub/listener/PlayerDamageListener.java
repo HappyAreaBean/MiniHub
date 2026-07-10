@@ -25,7 +25,7 @@ public class PlayerDamageListener implements Listener {
                 var source = e.getDamageSource();
                 var causing = source.getCausingEntity();
 
-                if (config.feature().pvp() && causing instanceof Player) {
+                if (config.feature().disablePvp() && causing instanceof Player) {
                     e.setCancelled(false);
                     return;
                 }

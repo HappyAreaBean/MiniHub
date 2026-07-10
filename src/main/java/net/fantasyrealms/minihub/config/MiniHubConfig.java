@@ -38,22 +38,22 @@ public interface MiniHubConfig {
     interface Feature {
 
         @Order(100)
-        default boolean pvp() {
+        default boolean disablePvp() {
             return true;
         }
 
         @Order(200)
-        default boolean blockPlace() {
+        default boolean preventBlockPlace() {
             return true;
         }
 
         @Order(300)
-        default boolean blockBreak() {
+        default boolean preventBlockBreak() {
             return true;
         }
 
         @Order(310)
-        default boolean explosion() {
+        default boolean preventExplosion() {
             return true;
         }
 
@@ -61,12 +61,12 @@ public interface MiniHubConfig {
         @Comment({
                 "Should the player take any damage"
         })
-        default boolean takeDamage() {
+        default boolean preventPlayerTakeDamage() {
             return true;
         }
 
         @Order(500)
-        default boolean interact() {
+        default boolean preventAllInteract() {
             return true;
         }
 
@@ -101,7 +101,7 @@ public interface MiniHubConfig {
         }
 
         @Order(800)
-        default boolean weatherChange() {
+        default boolean preventNaturalWeatherChange() {
             return true;
         }
 

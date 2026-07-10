@@ -77,19 +77,19 @@ public final class MiniHub extends JavaPlugin {
         var feature = config.feature();
         var pm = Bukkit.getPluginManager();
 
-        if (feature.pvp())
+        if (feature.disablePvp())
             pm.registerEvents(new PlayerDamagePlayerListener(), this);
 
-        if (feature.blockPlace())
+        if (feature.preventBlockPlace())
             pm.registerEvents(new BlockPlaceListener(), this);
 
-        if (feature.blockBreak())
+        if (feature.preventBlockBreak())
             pm.registerEvents(new BlockBreakListener(), this);
 
-        if (feature.takeDamage())
+        if (feature.preventPlayerTakeDamage())
             pm.registerEvents(new PlayerDamageListener(), this);
 
-        if (feature.interact())
+        if (feature.preventAllInteract())
             pm.registerEvents(new PlayerInteractListener(), this);
 
         if (feature.instantExtinguishFire())
@@ -98,10 +98,10 @@ public final class MiniHub extends JavaPlugin {
         if (feature.voidTeleportY())
             pm.registerEvents(new VoidTeleportYListener(), this);
 
-        if (feature.weatherChange())
+        if (feature.preventNaturalWeatherChange())
             pm.registerEvents(new WeatherChangeListener(), this);
 
-        if (feature.explosion())
+        if (feature.preventExplosion())
             pm.registerEvents(new ExplosionListener(), this);
 
         if (feature.noHungerChange())
