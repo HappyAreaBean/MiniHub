@@ -9,3 +9,6 @@ load: POSTWORLD
 
 authors: [ HappyAreaBean ]
 website: https://fantasyrealms.net
+
+softdepend:
+  - PlaceholderAPI
