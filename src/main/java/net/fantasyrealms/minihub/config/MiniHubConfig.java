@@ -125,15 +125,15 @@ public interface MiniHubConfig {
             return GameMode.ADVENTURE;
         }
 
-        void setPvp(boolean pvp);
+        void setDisablePvp(boolean disablePvp);
 
-        void setBlockPlace(boolean blockPlace);
+        void setPreventBlockPlace(boolean preventBlockPlace);
 
-        void setBlockBreak(boolean blockBreak);
+        void setPreventBlockBreak(boolean preventBlockBreak);
 
-        void setTakeDamage(boolean takeDamage);
+        void setPreventPlayerTakeDamage(boolean preventPlayerTakeDamage);
 
-        void setInteract(boolean interact);
+        void setPreventAllInteract(boolean preventAllInteract);
 
         void setInstantExtinguishFire(boolean instantExtinguishFire);
 
@@ -143,7 +143,7 @@ public interface MiniHubConfig {
 
         void setVoidTeleportYValue(int voidTeleportYValue);
 
-        void setWeatherChange(boolean weatherChange);
+        void setPreventNaturalWeatherChange(boolean preventNaturalWeatherChange);
 
     }
 
