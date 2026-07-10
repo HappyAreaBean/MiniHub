@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id("java-library")
     alias(libs.plugins.shadow)
@@ -31,9 +33,14 @@ tasks {
         dependsOn(shadowJar)
     }
 
+    runPaper {
+        disablePluginJarDetection()
+    }
+
     runServer {
         minecraftVersion(libs.versions.minecraft.get())
         jvmArgs("-Xms2G", "-Xmx2G", "-Dcom.mojang.eula.agree=true")
+        pluginJars(devJar.get().archiveFile)
     }
 
     processResources {
@@ -54,6 +61,16 @@ tasks {
         relocate("revxrsal.commands", "${pkg}.commands")
         relocate("fr.mrmicky.fastboard", "${pkg}.fastboard")
     }
+}
+
+val devJar = tasks.register("shadowDevJar", ShadowJar::class) {
+    description = "Create a unrelocated JAR for run-paper"
+
+    from(sourceSets.main.map { it.output })
+    configurations = project.configurations.runtimeClasspath.map { listOf(it) }
+
+    archiveClassifier = "dev"
+    archiveBaseName.set(rootProject.name)
 }
 
 tasks.withType(xyz.jpenilla.runtask.task.AbstractRun::class) {
